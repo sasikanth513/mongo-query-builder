@@ -1,3 +1,34 @@
+```
+const BASE_PATH = 'https://docs.mongodb.com/manual/tutorial/';
+const SAMPLE_RECORD =
+{
+  status: "shipped", // "delivered", "ordered"
+  name: "mongo query builder e-book",
+  item: {
+    name: 'Mongo Query Builder',
+    author: {
+      name: "Sasikanth Dronavalli",
+      twitter: 'https://twitter.com/sasi513'
+    },
+    quantity: 1,
+  },
+  history: [
+    {
+      status: "delivered",
+      createdAt: ISODate("2019-05-25T01:48:01.873Z")
+    },
+    {
+      status: "shipped",
+      createdAt: ISODate("2019-05-21T01:48:01.873Z")
+    },
+    {
+      status: "ordered",
+      createdAt: ISODate("2019-05-20T01:48:01.873Z")
+    },
+  ]
+}
+;
+```
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

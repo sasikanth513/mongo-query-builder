@@ -3,8 +3,6 @@ import { Card } from 'antd';
 
 
 class CodeRender extends Component {
-
-
   render() {
     return (
       <div className="output-block">

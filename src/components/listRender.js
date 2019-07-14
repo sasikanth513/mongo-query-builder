@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Select } from 'antd';
-import CodeRender from './codeRender.js';
+// import CodeRender from './codeRender.js';
 
 const { Option } = Select;
 
@@ -9,27 +9,32 @@ class ListRender extends Component {
   constructor(props) {
     super(props);
     this.id = Date.now();
+
+    this.methods = {
+      setQuery: this.props.methods.setQuery,
+      setMethod: this.props.methods.setMethod,
+    }
   }
 
   render() {
     function onChange(index) {
-      // reset output
-      ReactDOM.unmountComponentAtNode(document.getElementById('output'));
+      // remove existing children dropdowns
       ReactDOM.unmountComponentAtNode(document.getElementById(this.id));
 
       const data = this.props.data[index];
       if (data && data.children && data.children.length > 0) {
         ReactDOM.render(
-          <ListRender data={data.children} label={data.label || false} />,
+          <ListRender data={data.children} label={data.label || false} methods={this.methods} />,
           document.getElementById(this.id)
         );
       }
 
-      if (data.command) {
-        ReactDOM.render(
-          <CodeRender code={data.command} />,
-          document.getElementById('output')
-        );
+      if (data.query) {
+        this.methods.setQuery(data.query);
+      }
+
+      if (data.method) {
+        this.methods.setMethod(data.method);
       }
     }
 

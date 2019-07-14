@@ -4,13 +4,12 @@ export default [
     link: 'query-documents',
     desc: 'Find',
     method: 'find',
-    query: '{}',
     children: [
       {
         id: 'all',
         link: 'query-documents/#select-all-documents-in-a-collection',
         desc: 'All documents',
-        command: `db.orders.find({})`,
+        query: '{}',
       },
       {
         id: 'filter',
@@ -29,27 +28,27 @@ export default [
                   {
                     id: 'filter.number.eq',
                     desc: 'Equals to',
-                    command: `db.orders.find( { 'item.quantity': 1 } ))`,
+                    query: '{ "item.quantity": 1 }',
                   },
                   {
                     id: 'filter.number.gt',
                     desc: 'Greater than',
-                    command: `db.orders.find( { 'item.quantity': { $gt: 0 } } )`,
+                    query: '{ "item.quantity": { $gt: 0 } }',
                   },
                   {
                     id: 'filter.number.gte',
                     desc: 'Greater than or equals to',
-                    command: `db.orders.find( { 'item.quantity': { $gte: 1 } } )`,
+                    query: '{ "item.quantity": { $gte: 1 } } )',
                   },
                   {
                     id: 'filter.number.lt',
                     desc: 'Less than',
-                    command: `db.orders.find( { 'item.quantity': { $lt: 2 } } )`,
+                    query: '{ "item.quantity": { $lt: 2 } }',
                   },
                   {
                     id: 'filter.number.lte',
                     desc: 'Less than or equals to',
-                    command: `db.orders.find( { 'item.quantity': { $lte: 1 } } )`,
+                    query: '{ "item.quantity": { $lte: 1 } }',
                   },
                 ]
               },
@@ -61,13 +60,13 @@ export default [
                     id: 'filter.string.complete',
                     link: 'query-documents/#specify-equality-condition',
                     desc: 'Complete string',
-                    command: `db.orders.find( { status: "shipped" } ))`,
+                    query: '{ status: "shipped" }',
                   },
                   {
                     id: 'filter.string.array',
                     link: 'query-documents/#specify-equality-condition',
                     desc: 'From array of strings',
-                    command: `db.orders.find( { status: { $in: [ "shipped", "delivered" ] } } )`,
+                    query: '{ status: { $in: [ "shipped", "delivered" ] } }',
                   },
                 ]
               },
@@ -79,7 +78,7 @@ export default [
                     id: 'filter.array.contains',
                     link: 'query-documents/#specify-equality-condition',
                     desc: 'Contains',
-                    command: `db.orders.find( { status: "shipped" } ))`,
+                    query: '{ status: "shipped" }',
                   },
                 ]
               },
@@ -91,7 +90,7 @@ export default [
                     id: 'filter.array.objects.string',
                     link: 'query-documents/#specify-equality-condition',
                     desc: 'String',
-                    command: `db.orders.find( { 'status': "shipped" } ))`,
+                    query: '{ status: "shipped" }',
                   },
                 ]
               },
@@ -103,7 +102,7 @@ export default [
                     id: 'filter.array.objects.string',
                     link: 'query-documents/#specify-equality-condition',
                     desc: 'String',
-                    command: `db.orders.find( { 'status': "shipped" } ))`,
+                    query: '{ status: "shipped" }',
                   },
                 ]
               },
@@ -116,17 +115,17 @@ export default [
               {
                 id: 'multiple.filter.and',
                 desc: 'With AND condition',
-                command: `db.orders.find({ status: 'shipped', 'item.name': 'Mongo Query Builder' }) \n\n OR \n\n db.orders.find({ $and: [ { status: 'shipped' }, {'item.name': 'Mongo Query Builder' } ] })`,
+                query: '{ $and: [ { status: "shipped" }, {"item.name": "Mongo Query Builder" } ] }',
               },
               {
                 id: 'multiple.filter.or',
                 desc: 'With OR condition',
-                command: `db.orders.find({ $or: [ { status: 'delivered' }, {'item.name': 'Mongo Query Builder' } ] })`,
+                query: '{ $or: [ { status: "delivered" }, {"item.name": "Mongo Query Builder" } ] }',
               },
               {
                 id: 'multiple.filter.both',
                 desc: 'With both AND & OR condition',
-                command: `db.orders.find({ $and: [ { $or: [ { status: 'shipped'}, { status: 'delivered'  } ] }, {'item.name': 'Mongo Query Builder' } ] })`,
+                query: '{ $and: [ { $or: [ { status: "shipped"}, { status: "delivered"  } ] }, {"item.name": "Mongo Query Builder" } ] }',
               }
             ]
           }

@@ -3,14 +3,24 @@ import { Card } from 'antd';
 
 
 class CodeRender extends Component {
+  showCodeBlock() {
+    return this.props.method && this.props.query;
+  }
+
   render() {
     return (
-      <div className="output-block">
-        <Card className="code-card">
-          {this.props.code}
-        </Card>
+      <div>
+        {
+          this.showCodeBlock() ? (
+            <div className="output-block" >
+              <Card className="code-card">
+                {`db.orders.${this.props.method}(${this.props.query});`}
+              </Card>
+            </div>
+          ) : ''
+        }
       </div>
-    );
+    )
   }
 }
 

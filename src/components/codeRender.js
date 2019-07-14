@@ -7,6 +7,24 @@ class CodeRender extends Component {
     return this.props.method && this.props.query;
   }
 
+  getCommand() {
+    const { query, method } = this.props;
+    if (Array.isArray(query)) {
+      let command = '';
+
+      for (let i = 0; i < query.length; i++) {
+        command += `db.orders.${method}(${query[i]});`;
+
+        if (i !== query.length - 1) {
+          command += `\n\nOR\n\n`;
+        }
+      };
+      return command;
+    } else {
+      return `db.orders.${method}(${query});`;
+    }
+  }
+
   render() {
     return (
       <div>
@@ -14,7 +32,7 @@ class CodeRender extends Component {
           this.showCodeBlock() ? (
             <div className="output-block" >
               <Card className="code-card">
-                {`db.orders.${this.props.method}(${this.props.query});`}
+                {this.getCommand()}
               </Card>
             </div>
           ) : ''

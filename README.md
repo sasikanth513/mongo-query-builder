@@ -12,17 +12,21 @@ const SAMPLE_RECORD =
     },
     quantity: 1,
   },
+  colors: [ "blue", "red", "green" ],
   history: [
     {
       status: "delivered",
+      warehouse: "3",
       createdAt: ISODate("2019-05-25T01:48:01.873Z")
     },
     {
       status: "shipped",
+      warehouse: "2",
       createdAt: ISODate("2019-05-21T01:48:01.873Z")
     },
     {
       status: "ordered",
+      warehouse: "1",
       createdAt: ISODate("2019-05-20T01:48:01.873Z")
     },
   ]

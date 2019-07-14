@@ -31,6 +31,8 @@ class ListRender extends Component {
 
       if (data.query) {
         this.methods.setQuery(data.query);
+      } else {
+        this.methods.setQuery(null);
       }
 
       if (data.method) {

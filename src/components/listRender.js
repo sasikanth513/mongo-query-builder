@@ -45,12 +45,8 @@ class ListRender extends Component {
       <div className={className}>
         {this.props.label ? <label>{this.props.label}</label> : ''}
         <Select
-          showSearch
           style={{ width: '100%' }}
           placeholder="Select an option"
-          filterOption={(input, option) =>
-            option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-          }
           onChange={onChange.bind(this)}
         >
           {this.props.data.map(function (item, index) {
